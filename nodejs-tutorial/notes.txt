@@ -1,0 +1,60 @@
+1) Why NodeJs?
+    - Simple answer is because its uses asynchronous programming.
+    - Explaining: 
+        A typical web server works like below
+            1) It accepts request from client
+            2) It sends the request to filesystem
+            3) Wait for filesystem to read the content
+            4) When read opearation over it sends the data back to client as response
+            5) Then become ready for handeling the next client request.
+
+        But Node perform above opeartion as below
+            1) It accepts request from client
+            2) It sends the request to filesystem
+            3) Ready to handle the next request.
+            4) When the file system has opened and read the file, the server returns the content to the client.
+
+    NodeJs eliminate waiting. Its run as single threaded, non blocking  asynchronous programming which is memory efficient.
+
+2) What is the HTTP header we add as writeHead while creating a HTTP server?
+    - NodeJs has a built-in module called `http` to create a web server. 
+    - http.createServer((req, res)=>{
+        res.writeHead(200, {'content-Type': 'text/plain'}) -> The way user want to receive the response(html or json or tet)
+        res.write(weoewjwe) -> It gives the response to client
+        res.end() -> It termintaes the response
+    }).listen(3000);
+
+3) NodeJs filesystem module.
+    - File system module `fs` is most commonly used inbuilt module in Node.
+    By using this we can Create a file, write, read, update and delete the file.
+    - We can create a file 3 ways
+        - fs.appendFile() -> Append the specified content to teh file. It creates file if not exist.
+        - fs.open() -> Open a file and write content to it if `w` flag mentioned. It creates file if not exist.
+        - fs.writeFile() -> replaces the specified file and content if it exists. If the file does not exist, a new file, containing the specified content, will be created.
+
+    - For UPDATE we can use fs.appendFile() or fs.writeFile()
+    - FOr DELETE we can use fs.unlink() method
+
+4) NOdeJs url module.
+    - The url module `url` helps in extracting informations(splitting the url) in readbale format.
+
+
+5) Difference between Module, Package and Library?
+    Lets understand it in layman termintaes 
+    - Module is a file or script that have collection of functions and classes. Its for code reusability.
+        We can import a module into different module or file. Ex: `demo.js` is a module.
+    - Package is a collection of similar files or modules. Ex:- `upper-case` package contains list of modules or .js files related to case sensitivity.
+    - Library is prewritten codes (colelction of packages) that extends the capability of a programming language.
+        Ex:- Math Library
+
+6) EVENTS in NodeJs.
+    - Any action on computer is an event. We can generate an event while opening or closing a file.
+    - NodeJs has an `event` module. All the properties and methods of events coming from the eventemitter object.
+    - By using eventemitter object we can create our own eventhandler function and own event.
+
+7) MongoDB
+    - In MongoDB, a database is not created until it gets content!
+    - MongoDB waits until you have created a collection (table), with at least one document (record) before it actually creates the database (and collection).
+    - In MongoDB, a collection is not created until it gets content!
+    - MongoDB waits until you have inserted a document before it actually creates the collection.
+    - If you try to insert documents in a collection that do not exist, MongoDB will create the collection automatically.
